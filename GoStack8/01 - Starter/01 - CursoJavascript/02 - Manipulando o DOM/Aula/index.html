@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulando o DOM</title>
+</head>
+<body>
+
+    <div id="app">
+        <input id="nome" />
+    </div>
+    
+    <script>
+        var linkElement = document.createElement('a');
+        linkElement.setAttribute('href', 'https://github.com/ElissonSantos');
+        linkElement.setAttribute('title', 'GitHub do Elisson');
+
+        linkElement.style.fontSize = '30px';
+        linkElement.style.fontWeight = 'bold';
+
+        var textElement = document.createTextNode('GITHUB do Elisson Santos');
+        linkElement.appendChild(textElement);
+
+        var contairnerElement = document.querySelector("#app");
+        contairnerElement.appendChild(linkElement);
+
+        var inputElement = document.querySelector("#nome");
+        contairnerElement.removeChild(inputElement);
+    </script>
+    
+</body>
+</html>

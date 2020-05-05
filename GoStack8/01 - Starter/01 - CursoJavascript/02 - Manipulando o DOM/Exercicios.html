@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM</title>
+  </head>
+  <body>
+      <div id="tittle" style="text-align: center;">
+          <h1>Resolucoes do exercicio 2 do curso GoStack 8.0</h1>
+      </div>
+
+      <div id="exercicio1e2" style="border: 1px solid black; padding: 10px;">
+        <h2>Exercicio 1 e 2</h2>
+        <button onclick="criarElemento()" >Criar Elemento</button>
+        <div id="result1e2" style="display: flex; flex-direction: row;"></div>
+    </div>
+
+    <div id="exercicio3e4" style="border: 1px solid black; padding: 10px;">
+        <h2>Exercicio 3 e 4</h2>
+        <ul id="result3e4"></ul>
+        <input type="text" name="nome">
+        <button onClick="adicionar()">Adicionar</button>
+
+    </div>
+
+    <script>
+        /*
+         * 1 Exercício
+         * Crie um botão que ao ser clicado cria um novo elemento em tela
+         * com a forma de um quadrado vermelho com 100px de altura e largura.
+         * Sempre que o botão for clicado um novo quadrado deve aparecer na tela.
+         */
+        function criarElemento() {
+            var createBox = document.createElement('div');
+            createBox.setAttribute('id', 'div');
+            createBox.setAttribute('onmouseover', 'changeColor(this)');
+            createBox.style.width = '100px';
+            createBox.style.height = '100px';
+            createBox.style.backgroundColor = "#f00";
+            createBox.style.margin = '5px';
+
+            var exercicio1Div = document.getElementById("result1e2");
+            exercicio1Div.appendChild(createBox);
+        }
+
+        /*
+         * 2 Exercício
+         * Utilizando o resultado do primeiro desafio, toda vez que
+         * o usuário passar o mouse por cima de algum quadrado troque
+         * sua cor para uma cor aleatória gerada pela função abaixo:
+         */
+         function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        // Funcao que muda a cor da div
+        function changeColor(divSelected) {
+            var newColor = getRandomColor();
+            divSelected.style.backgroundColor = newColor;
+        }
+
+        /*
+         * 3 Exercício
+         * A partir do seguinte vetor:
+         */
+        var nomes = ["Diego", "Gabriel", "Lucas"];
+        /*
+         * Preencha uma lista (<ul>) no HTML com os itens da seguinte forma:
+         * ● Diego
+         * ● Gabriel
+         * ● Lucas
+         */
+        nomes.forEach(nome => {
+            makeLi(nome);
+        });
+        function makeLi(nome) {
+            var listName = document.createElement('li');
+
+            var textName = document.createTextNode(nome);
+            listName.appendChild(textName);
+
+            var exercicio3Div = document.getElementById("result3e4");
+            exercicio3Div.appendChild(listName);
+        }
+
+        /*
+         * 4 Exercício
+         * Seguindo o resultado do exercício anterior adicione um input em tela e um botão como a seguir:
+         * <input type="text" name="nome">
+         * <button onClick="adicionar()">Adicionar</button>
+         * Ao clicar no botão, a função adicionar() deve ser disparada adicionando um novo item a lista de
+         * nomes baseado no nome preenchido no input e renderizando o novo item em tela juntos aos
+         * demais itens anteriores. Além disso, o conteúdo do input deve ser apagado após o clique.
+         */
+        var inputElement = document.querySelector('input[name=nome]');
+        
+        function adicionar() {
+            var name = inputElement.value;
+            makeLi(name);
+            inputElement.value = null;
+        }
+
+    </script>
+  </body>
+</html>

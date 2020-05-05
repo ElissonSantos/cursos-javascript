@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Introducao</title>
+  </head>
+  <body>
+    <div style="text-align: center;">
+        <h1>Resolucoes do exercicio 1 do curso GoStack 8.0</h1>
+    </div>
+    
+    <script>
+        /*
+         * 1 Exercício
+         * Crie uma função que dado o objeto a seguir:
+         */
+        var endereco = {
+            rua: "Rua dos pinheiros",
+            numero: 1293,
+            bairro: "Centro",
+            cidade: "São Paulo",
+            uf: "SP"
+        };
+
+        /*
+         * Retorne o seguinte conteúdo:
+         * O usuário mora em São Paulo / SP, no bairro Centro, na rua "Rua dos Pinheiros" com
+         * nº 1293.
+         */
+
+        console.log(
+                "O usuário mora em " + endereco.cidade + " / " + endereco.uf +
+                ", no bairro " + endereco.bairro + ', na rua "' +
+                endereco.rua + '" com nº ' + endereco.numero + "."
+                );
+
+        /*
+         * 2 Exercício
+         * Crie uma função que dado um intervalo (entre x e y) exiba todos número pares:
+         */
+        function pares(x, y) {
+            var pares = [];
+
+            while (x <= y) {
+                if (x % 2 == 0) {
+                    pares.push(x);
+                }
+                x++;
+            }
+
+            return pares;
+        }
+        
+        var retorno = pares(32, 321);
+        console.log(retorno);
+
+        /*
+         * 3 Exercício
+         * Escreva uma função que verifique se o vetor de habilidades
+         * passado possui a habilidade "Javascript"
+         * e retorna um booleano true/false caso exista ou não.
+         */
+        function temHabilidade(skills) {
+            var have = skills.indexOf("Javascript");
+            return have !== -1 ? true : false;
+        }
+        
+        var skills = ["Javascript", "ReactJS", "React Native"];
+        var retorno = temHabilidade(skills);
+        console.log(retorno);
+
+        /*
+         * 4 Exercício
+         * Escreva uma função que dado um total de anos de estudo retorna o quão experiente o usuário é:
+         */
+        function experiencia(anos) {
+            if (anos >= 0 && anos <= 1) {
+                return "Iniciante";
+            } else if (anos > 1 && anos <= 3) {
+                return "Intermediario";
+            } else if (anos > 3 && anos <= 6) {
+                return "Avançado";
+            } else if (anos >= 7) {
+                return "Jedi Master";
+            } else {
+                return "Nem comecou a caminhada";
+            }
+        }
+
+        var anosEstudo = 7;
+        var retorno = experiencia(anosEstudo);
+        console.log(retorno);
+
+        /*
+         * 5 Exercício
+         * Dado o seguinte vetor de objetos:
+         */
+        var usuarios = [
+            {
+                nome: "Diego",
+                habilidades: ["Javascript", "ReactJS", "Redux"]
+            },
+            {
+                nome: "Gabriel",
+                habilidades: ["VueJS", "Ruby on Rails", "Elixir"]
+            }
+        ];
+
+        /*
+         * Escreva uma função que produza o seguinte resultado:
+         * O Diego possui as habilidades: Javascript, ReactJS, Redux
+         * O Gabriel possui as habilidades: VueJS, Ruby on Rails, Elixir
+        */
+        function skillsUsuario (usuarios) {
+            for (let value of usuarios) {
+                var frase = "O " + value.nome + " possui as habilidades: " + value.habilidades;
+                console.log(frase)                
+            }
+        }
+
+        skillsUsuario(usuarios);
+        
+    </script>
+  </body>
+</html>
